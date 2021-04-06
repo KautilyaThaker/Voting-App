@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "939885560040",
+    "project_id": "voting-app-final",
+    "storage_bucket": "voting-app-final.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939885560040:android:b85b5fa6db4604f451495d",
+        "android_client_info": {
+          "package_name": "com.kautlya.voting_app_final"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939885560040-2bkddact1ssb4guaijjk0ofd22cdpn3m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYVRJnGOqpLyWD5-n-uPRegl82MrB6ylU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939885560040-2bkddact1ssb4guaijjk0ofd22cdpn3m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
