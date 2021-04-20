@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:voting_app_final/services/auth.dart';
 
 class LoginPage extends StatelessWidget {
@@ -21,76 +20,83 @@ class LoginPage extends StatelessWidget {
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-            Colors.cyan[300],
-            Colors.cyan[500],
-            Colors.cyan[600],
-          ]),
+          gradient: LinearGradient(begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Colors.redAccent,
+                Colors.cyan[500],
+                Colors.yellowAccent,
+              ]),
         ),
         child: Column(
           children: <Widget>[
-            SizedBox(height: 80,),
+            SizedBox(height: 70),
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(40),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Center(
-                    child: Text("Login", style: TextStyle(color: Colors.white, fontSize: 40),),
+                    child: Text("Login", style: TextStyle(color: Colors.white, fontSize: 55),),
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(height: 30,),
                   Center(
-                    child: Text("Welcome to E-Voting", style: TextStyle(color: Colors.white, fontSize: 18),),
-                  )
+                    child: Text("Welcome to E-Voting", style: TextStyle(color: Colors.white, fontSize: 25),),
+                  ),
+                  SizedBox(height: 50,),
+                  Opacity(
+                      opacity: 0.9,
+                      child: Center(child: Image.asset('assets/logo.png'))),
+                  // SizedBox(height: 10.0,),
                 ],
               ),
             ),
-            Expanded(child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(60),
-                    topRight: Radius.circular(60),
-                  )
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(30),
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height: 40,),
-                    SizedBox(height: 10.0),
-                    Container(
-                      height: 50,
-                      margin: EdgeInsets.symmetric(horizontal: 50),
-
-                      child: Center(
-                        // ignore: deprecated_member_use
-                        child: RaisedButton(
-                          onPressed: () {
-                            _signInWithGoogle();
-                            //     Navigator.pushNamed(context, '/takeprofile');
-                            //   }else{
-                            //   Navigator.pushNamed(context, '/home');
-                            // }
-                          },
-                          padding: EdgeInsets.only(left: 40.0, right: 40.0),
-                          color: Colors.cyan,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(20.0))
-                          ),
-                          child: Text("Login",style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold
-                          ),
-                          ),
+            // ignore: deprecated_member_use
+            Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: RaisedButton(
+                color: Colors.white,
+                onPressed: () {
+                  _signInWithGoogle();
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 0, top: 10, bottom: 10, left: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Image.asset('assets/google-logo.png'),
+                      SizedBox(width: 5,),
+                      Text(
+                        'Sign in with Google',
+                        style: TextStyle(
+                          fontSize: 17.0,
                         ),
+                      ),
+                      SizedBox(width: 10,),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            // SizedBox(height: 90.0,),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.info_outline,
+                      color: Colors.black87,),
+                    SizedBox(width: 5,),
+                    Text('Created by 19IT129 and 19IT145',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black87,
                       ),
                     ),
                   ],
                 ),
-              ),
-            ))
+              ],
+            ),
           ],
         ),
       ),

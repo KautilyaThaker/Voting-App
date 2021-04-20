@@ -3,59 +3,57 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class User {
-  User({@required this.uid});
+import 'database.dart';
+
+class UserData {
+  UserData({ this.uid,this.name,this.photoURL});
   final String uid;
+  final String name;
+  final String photoURL;
 }
 
 abstract class AuthBase {
-  Stream<User> get onAuthStateChanged;
-  Future<User> currentUser();
-  Future<User> signInAnonymously();
-  Future<User> signInWithGoogle();
+  Stream<UserData> get onAuthStateChanged;
+  Future<UserData> currentUser();
+  Future<UserData> signInWithGoogle();
   Future<void> signOut();
 }
 
 class Auth implements AuthBase {
   final _firebaseAuth = FirebaseAuth.instance;
 
-  User _userFromFirebase(FirebaseUser user) {
+  UserData _userFromFirebase(User user) {
     if (user == null) {
       return null;
     }
-    return User(uid: user.uid);
+    return UserData(uid: user.uid,name: user.displayName,photoURL: user.photoURL);
   }
 
   @override
-  Stream<User> get onAuthStateChanged {
-    return _firebaseAuth.onAuthStateChanged.map(_userFromFirebase);
+  Stream<UserData> get onAuthStateChanged {
+    return _firebaseAuth.authStateChanges().map(_userFromFirebase);
   }
 
   @override
-  Future<User> currentUser() async {
-    final user = await _firebaseAuth.currentUser();
+  Future<UserData> currentUser() async {
+    final user = await _firebaseAuth.currentUser;
     return _userFromFirebase(user);
   }
 
   @override
-  Future<User> signInAnonymously() async {
-    final authResult = await _firebaseAuth.signInAnonymously();
-    return _userFromFirebase(authResult.user);
-  }
-
-  @override
-  Future<User> signInWithGoogle() async {
+  Future<UserData> signInWithGoogle() async {
     final googleSignIn = GoogleSignIn();
     final googleAccount = await googleSignIn.signIn();
     if (googleAccount != null) {
       final googleAuth = await googleAccount.authentication;
       if (googleAuth.accessToken != null && googleAuth.idToken != null) {
         final authResult = await _firebaseAuth.signInWithCredential(
-          GoogleAuthProvider.getCredential(
+          GoogleAuthProvider.credential(
             idToken: googleAuth.idToken,
             accessToken: googleAuth.accessToken,
           ),
         );
+        await DatabaseService(uid: authResult.user.uid).updateUserData(authResult.user.displayName, "Student",authResult.user.email,authResult.user.photoURL);
         return _userFromFirebase(authResult.user);
       } else {
         throw PlatformException(

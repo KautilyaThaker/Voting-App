@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:voting_app_final/log_in_page/LoginPage.dart';
 import 'package:voting_app_final/main_page/mainpage.dart';
 import 'package:voting_app_final/services/auth.dart';
-import 'package:voting_app_final/take_profile_info/takeprofilepage.dart';
 
 class LandingPage extends  StatelessWidget {
   LandingPage({ @required this.auth });
@@ -10,15 +9,15 @@ class LandingPage extends  StatelessWidget {
 
     @override
     Widget build(BuildContext context) {
-      return StreamBuilder<User>(
+      return StreamBuilder<UserData>(
           stream: auth.onAuthStateChanged,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.active) {
-              User user = snapshot.data;
+              UserData user = snapshot.data;
               if (user == null) {
                 return LoginPage(auth: auth,);
               }
-              return takeprofile(
+              return MainPage(
                 auth: auth,
               );
 

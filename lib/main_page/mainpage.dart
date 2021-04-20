@@ -22,6 +22,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset : false,
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         title: Text('E-voting'),
@@ -54,17 +55,65 @@ class _MainPageState extends State<MainPage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              IconButton(
-                icon: Image.asset('assets/create.jpg'),
-                iconSize: 150,
-                onPressed: () {},
+              Column(
+                children: [
+                  IconButton(
+                    icon: Image.asset('assets/create.jpg'),
+                    iconSize: 150,
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/vi');
+                    },
+                  ),
+                  Container(
+                    height: 40,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1.5,
+                        color: Colors.blue,
+                      ),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Center(child: Text(
+                      'Create Voting',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    ),
+                  ),
+                ],
               ),
-              IconButton(
-                icon: Image.asset('assets/vote.jpg'),
-                iconSize: 150,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/getid');
-                },
+              Column(
+                children: [
+                  IconButton(
+                    icon: Image.asset('assets/vote.jpg'),
+                    iconSize: 150,
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/getid');
+                    },
+                  ),
+                  Container(
+                    height: 40,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1.5,
+                        color: Colors.blue,
+                      ),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Center(child: Text(
+                      'Voting',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -73,19 +122,65 @@ class _MainPageState extends State<MainPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              IconButton(
-                icon: Image.asset('assets/result.png'),
-                iconSize: 150,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/getid');
-                },
+              Column(
+                children: [
+                  IconButton(
+                    icon: Image.asset('assets/result.png'),
+                    iconSize: 150,
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/getid');
+                    },
+                  ),
+                  Container(
+                    height: 40,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1.5,
+                        color: Colors.blue,
+                      ),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Center(child: Text(
+                      'Results',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    ),
+                  ),
+                ],
               ),
-              IconButton(
-                icon: Image.asset('assets/profile.png'),
-                iconSize: 150,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/profilep');
-                },
+              Column(
+                children: [
+                  IconButton(
+                    icon: Image.asset('assets/profile.png'),
+                    iconSize: 150,
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/profilep');
+                    },
+                  ),
+                  Container(
+                    height: 40,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1.5,
+                        color: Colors.blue,
+                      ),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Center(child: Text(
+                      'Profile',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

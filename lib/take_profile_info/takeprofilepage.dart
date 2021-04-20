@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:voting_app_final/services/auth.dart';
 import 'package:wc_form_validators/wc_form_validators.dart';
 
 class takeprofile extends StatefulWidget {
-  takeprofile({@required this.auth});
-  final AuthBase auth;
   @override
   _takeprofileState createState() => _takeprofileState();
 }
